@@ -2,6 +2,7 @@ package pgv.comunicar.procesos;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -42,7 +43,10 @@ public class Main {
 	    	        	texto = texto.trim(); // Borramos los espacios
 	    	        		
 	    	        } catch(Exception e) {
-	    	            e.printStackTrace();
+	    	        	String error = "Error en la ejecución del programa";
+	    	        	guardarError(error); //Guardamos el error en un fichero de texto
+	    	           e.printStackTrace();
+	    	           break; //Rompemos el bucle en caso de exception
 	    	        }    		    		
 	    	}
 	    	System.out.println("Se ha salido del bucle");
@@ -83,6 +87,22 @@ public class Main {
         
         }
 	
+    //Guardar error en un fichero de texto
+    public static void guardarError(String error) {
+    	try {
+    		File file = new File("errores.dat");
+        	FileWriter fw = new FileWriter(file);
+        	BufferedWriter bf = new BufferedWriter(fw);
+        	bf.write(error);
+        	bf.close();
+		} catch (Exception e) {
+			System.out.println("No se ha guardado el fichero de errores");
+		}
+    	
+    	
+    			
+    	
+    }
 	
 	
 }
