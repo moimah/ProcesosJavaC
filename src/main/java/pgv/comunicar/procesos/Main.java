@@ -19,8 +19,6 @@ public class Main {
 	    	texto = scanner.nextLine(); //Capturamos la entrada de teclado
 	    	texto = texto.trim(); //Borramos los espacios
 	    	
-	    	
-	    	
 	    	while (!texto.equals("salir")) { //Bucle de introduccion de texto
 	    		
 	    		 try {
